@@ -1,13 +1,15 @@
 console.log("testing sprite-raindrop.js");
 
 class Raindrop extends Sprite {
-    constructor() {
-        super();
+    constructor(width, height) {
+        super(width, height);
+        // constructor needs to receive parameters to override
+        // image source parameter for character models
         this.width = 2.5;
         this.height = 2.5;
-        this.spriteRaindrop = null;
         this.spriteRaindrop.classList.add("raindrop");
-        this.createSprite();        
+        this.createSprite();
+        this.fallDown();
     }
  /*   createRaindrop() {
         //this.spriteRaindrop = document.createElement("div");

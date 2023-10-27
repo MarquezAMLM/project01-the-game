@@ -9,16 +9,21 @@ h1 {
 
 #board {
     width: 85vw;
-    height: 55vw;
-    margin-top: 20px;
-    margin-right: auto;
-    margin-left: auto;
-    position: relative;
+    height: 75vh;
+    margin: auto;
+    margin-top: 5%;
+    margin-left: 7%;
+    position: absolute;
     border: 5px solid forestgreen;
 }
 
 #player {
     background-color: royalblue;
+    position: absolute;
+}
+
+.sprite {
+    background-color: purple;
     position: absolute;
 }
 

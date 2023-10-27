@@ -2,11 +2,14 @@ console.log("testing sprite-main.js");
 
 class Sprite {
     constructor() {
+        //this.width = 3;
+        //this.height = 3;
         this.positionX = Math.floor(Math.random() * 85 - this.width + 1) + 0;
         this.positionY = 100;
         this.sprite = null;
-        this.createSprite();   
+        this.createSprite();
     }
+    /* parameter - name of extended class */
     createSprite() {
         this.sprite = document.createElement("div");
 
@@ -27,25 +30,5 @@ class Sprite {
         }
     }
 }
-
-const spriteArr = [];
-
-// spawn
-setInterval(() => {
-    const newSprite = new Sprite();
-    spriteArr.push(newSprite);
-}, 1500);
-
-// despawn
-setInterval(() => {
-    spriteArr.forEach((spawnSprite) => {
-        spawnSprite.fallDown();
-
-        if (spawnSprite.positionY < 0 - spawnSprite.height) {
-            spawnSprite.sprite.remove();
-            spriteArr.shift();
-        }
-    });
-}, 50);
 
 console.log("sprite loaded", Sprite);
