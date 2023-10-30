@@ -1,29 +1,35 @@
 console.log("testing main.js");
 
 const player = new Player();
-const spriteRaindrop = new Sprite();
 const spriteArr = [];
 
-// spawn
 function helloSprite() {
-    const addSprite = new Sprite();
-    spriteArr.push(addSprite);
+    const addRaindrop = new Raindrop();
+    const addCookie = new Cookie();
+    const addPoop = new Poop();
+    const addHero = new Hero();
+    spriteArr.push(addRaindrop, addCookie, addPoop, addHero);
 }
-let spawnSprite = setInterval(helloSprite, 1500);
+const spawnSprite = setInterval(helloSprite, 1500);
 
-// despawn
 function goodbyeSprite() {
     spriteArr.forEach((addedSprite) => {
         addedSprite.fallDown();
 
-        if (player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY || addedSprite.positionY === 1 - addedSprite.height) {
+        if (player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY) {
             console.log("Collision!");
             addedSprite.sprite.remove();
-            spriteArr.shift();
-        } 
+            spriteArr.splice(spriteArr.length);
+        }
+
+        if (addedSprite.positionY === -1) {
+            console.log("On the floor!");
+            addedSprite.sprite.remove();
+            spriteArr.splice(spriteArr.length);
+        }
     });
 }
-let despawnSprite = setInterval(goodbyeSprite, 50);
+const despawnSprite = setInterval(goodbyeSprite, 50);
 
 document.addEventListener("keydown", (e) => {
     switch (e.code) {

@@ -1,50 +1,24 @@
 console.log("testing sprite-cookie.js");
 
-class Cookie {
+class Cookie extends Sprite {
     constructor() {
+        super();
         this.width = 2.5;
         this.height = 2.5;
-     
-    }
-    createCookie() {
-        this.spriteCookie = document.createElement("div");
+        this.createSprite();
+        this.sprite.classList.add("cookie");
 
-        this.spriteCookie.classList.add("cookie");
-
-        this.spriteCookie.style.width = this.width + "vw";
-        this.spriteCookie.style.height = this.height + "vh";
-        this.spriteCookie.style.left = this.positionX + "vw";
-        this.spriteCookie.style.bottom = this.positionY + "vh";
-
-        const parentElement = document.getElementById("board");
-        parentElement.appendChild(this.spriteCookie);
+        if (this.sprite) {
+            this.sprite.style.width = this.width + "vw";
+            this.sprite.style.height = this.height + "vh";
+        }
     }
     fallDown() {
         if (this.positionY > 0 - this.height) {
             this.positionY--;
-            this.spriteCookie.style.bottom = this.positionY + "vh";
-        }
+            this.sprite.style.bottom = this.positionY + "vh";
+        }       
     }
 }
-
-const cookieArr = [];
-
-// spawn
-setInterval(() => {
-    const newCookie = new Cookie();
-    cookieArr.push(newCookie);
-}, 1500);
-
-// despawn
-setInterval(() => {
-    cookieArr.forEach((spawnCookie) => {
-        spawnCookie.fallDown();
-
-        if (spawnCookie.positionY < 0 - spawnCookie.height) {
-            spawnCookie.spriteCookie.remove();
-            cookieArr.shift();
-        }
-    });
-}, 50);
 
 console.log("cookie loaded", Cookie);

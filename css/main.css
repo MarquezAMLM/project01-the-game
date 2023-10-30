@@ -23,26 +23,21 @@ h1 {
 }
 
 .sprite {
-    background-color: purple;
     position: absolute;
 }
 
 .raindrop {
     background-color: aqua;
-    position: absolute;
 }
 
 .cookie {
     background-color: tan;
-    position: absolute;
 }
 
 .poop {
     background-color: black;
-    position: absolute;
 }
 
 .hero {
     background-color: red;
-    position: absolute;
 }
