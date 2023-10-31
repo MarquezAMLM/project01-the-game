@@ -2,42 +2,44 @@ body {
     background-color: ivory;
 }
 
-h1 {
+#title {
     text-align: center;
     margin-top: 20px;
+    font-size: 45px;
+}
+
+#scoreboard {
+    text-align: center;
+
 }
 
 #board {
+    background-image: url("../images/game.background.png");
+    height: 80vh;
     width: 85vw;
-    height: 75vh;
+    object-fit: contain;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 30px;
     margin-left: 7%;
-    position: absolute;
+    padding-top: 50px;
     border: 5px solid forestgreen;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
+	background-size: cover;
+	padding-top: 50px;
+    position: absolute;
+
 }
 
 #player {
-    background-color: royalblue;
     position: absolute;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .sprite {
     position: absolute;
-}
-
-.raindrop {
-    background-color: aqua;
-}
-
-.cookie {
-    background-color: tan;
-}
-
-.poop {
-    background-color: black;
-}
-
-.hero {
-    background-color: red;
+    background-repeat: no-repeat;
+    background-size: contain;
 }

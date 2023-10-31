@@ -15,7 +15,7 @@ class Raindrop extends Sprite {
     }
     fallDown() {
         if (this.positionY > 0 - this.height) {
-            this.positionY--;
+            this.positionY -= 1;
             this.sprite.style.bottom = this.positionY + "vh";
         }       
     }
