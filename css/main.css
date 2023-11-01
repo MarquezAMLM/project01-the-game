@@ -2,6 +2,53 @@ body {
     background-color: ivory;
 }
 
+#cookie-container > img {
+    width: 50px;
+    width: 50px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#raindrop-container > img {
+    width: 35px;
+    height: 50px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#poop-container > img {
+    width: 60px;
+    height: 70px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#hero-container > img {
+    width: 80px;
+    height: 80px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+.play-legend {
+    font-size: 25px;
+    margin: 20px;
+    font-weight: bold;
+    display: grid;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#play-button {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    margin: auto;
+    left: 45%;
+    position: absolute;
+}
+
 #title {
     text-align: center;
     margin-top: 20px;
@@ -49,4 +96,26 @@ body {
     position: absolute;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+#game-over {
+    display: grid;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding: 20px;
+}
+
+#game-over > h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 115px;
+}
+
+#game-over > h2 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 36px;
 }
