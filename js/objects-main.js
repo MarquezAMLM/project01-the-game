@@ -30,7 +30,7 @@ class Sprite {
     }
     createSprite() {
         if (!this.sprite) {
-            this.positionX = Math.floor(Math.random() * 82 - this.width + 1) + 0;
+            this.positionX = Math.floor(Math.random() * (82 - this.width + 1)) + 0;
             this.positionY = 80;
 
             this.sprite = document.createElement("div");
@@ -45,8 +45,12 @@ class Sprite {
             parentElement.appendChild(this.sprite);
         }
     }
-    // can just have a placeholder like this:
-    fallDown() {}
+    fallDown() {
+        if (this.positionY > 0 - this.height) {
+            this.positionY--;
+            this.sprite.style.bottom = this.positionY + "vh";
+        }   
+    }
 }
 
 class Cookie extends Sprite {
@@ -56,7 +60,6 @@ class Cookie extends Sprite {
         this.height = 4;
         this.createSprite();
         this.sprite.classList.add("cookie");
-        this.spawn = 1000;
 
         if (this.sprite) {
             this.sprite.style.width = this.width + "vw";
@@ -64,12 +67,8 @@ class Cookie extends Sprite {
 
             this.sprite.style.backgroundImage = "url('./images/game.sprite.cookie.nobg.png')";
         }
-    }
-    fallDown() {
-        if (this.positionY > 0 - this.height) {
-            this.positionY--;
-            this.sprite.style.bottom = this.positionY + "vh";
-        }       
+        
+        this.fallDown();
     }
 }
 
@@ -87,12 +86,8 @@ class Raindrop extends Sprite {
 
             this.sprite.style.backgroundImage = "url('./images/game.sprite.raindrop.nobg.png')";
         }
-    }
-    fallDown() {
-        if (this.positionY > 0 - this.height) {
-            this.positionY -= 1;
-            this.sprite.style.bottom = this.positionY + "vh";
-        }       
+
+        this.fallDown();
     }
 }
 
@@ -110,11 +105,7 @@ class Poop extends Sprite {
 
             this.sprite.style.backgroundImage = "url('./images/game.sprite.poop.nobg.png')";
         }
-    }
-    fallDown() {
-        if (this.positionY > 0 - this.height) {
-            this.positionY--;
-            this.sprite.style.bottom = this.positionY + "vh";
-        }       
+
+        this.fallDown();
     }
 }

@@ -5,7 +5,13 @@ body {
 #title {
     text-align: center;
     margin-top: 20px;
-    font-size: 45px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+}
+
+#title > h2 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 36px;
 }
 
 #scoreboard {
@@ -22,7 +28,8 @@ body {
     margin-top: 30px;
     margin-left: 7%;
     padding-top: 50px;
-    border: 5px solid forestgreen;
+    border: 5px solid brown;
+    border-radius: 55px;
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center bottom;

@@ -1,42 +1,7 @@
-console.log("testing main.js");
-
 const player = new Player();
-const spriteArr = [];
-
-function helloSprite() {
-    const addRaindrop = new Raindrop();
-    const addCookie = new Cookie();
-    const addPoop = new Poop();
-    //const addHero = new Hero();
-    spriteArr.push(addRaindrop, addCookie, addPoop);
-}
-const spawnSprite = setInterval(helloSprite, 1500);
-
-var counter = 0;
-
-function goodbyeSprite() {
-    spriteArr.forEach((addedSprite) => {
-        addedSprite.fallDown();
-
-        if (player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY) {
-
-            counter++;
-
-            console.log("Collision!");
-            addedSprite.sprite.remove();
-            spriteArr.splice(spriteArr.length);
-
-        }
-
-        if (addedSprite.positionY === 5) {
-            console.log("On the floor!");
-            addedSprite.sprite.remove();
-            spriteArr.splice(spriteArr.length);
-        }
-    });
-}
-console.log("where is this", counter);
-const despawnSprite = setInterval(goodbyeSprite, 50);
+const cookieArr = [];
+const raindropArr = [];
+const poopArr = [];
 
 document.addEventListener("keydown", (e) => {
     switch (e.code) {
@@ -49,5 +14,87 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-const scoreboard = document.querySelector('#scoreboard');
-let inventory = document.querySelector('#cookieInventory');
+function spawnCookie() {
+    const addCookie = new Cookie();
+    cookieArr.push(addCookie);
+}
+function spawnRaindrop() {
+    const addRaindrop = new Raindrop();
+    raindropArr.push(addRaindrop);
+}
+function spawnPoop() {
+    const addPoop = new Poop();
+    poopArr.push(addPoop);
+}
+
+function despawnCookie() {
+    cookieArr.forEach((addedSprite) => {
+        addedSprite.fallDown();
+
+        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
+
+        if (collision) {
+            addedSprite.sprite.remove();
+            cookieArr.splice(cookieArr.length);
+            console.log("Cookies :)")
+        }
+
+        if (addedSprite.positionY === 5) {
+            addedSprite.sprite.remove();
+            cookieArr.splice(cookieArr.length);
+        }
+    })
+}
+
+function despawnRaindrop() {
+    raindropArr.forEach((addedSprite) => {
+        addedSprite.fallDown();
+
+        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
+
+        if (collision) {
+            addedSprite.sprite.remove();
+            raindropArr.splice(raindropArr.length);
+            console.log("Wet cookies :(")
+        }
+
+        if (addedSprite.positionY === 5) {
+            addedSprite.sprite.remove();
+            raindropArr.splice(raindropArr.length);
+        }
+    })
+}
+
+function despawnPoop() {
+    poopArr.forEach((addedSprite) => {
+        addedSprite.fallDown();
+
+        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
+
+        if (collision) {
+            addedSprite.sprite.remove();
+            poopArr.splice(poopArr.length);
+            console.log("...dirty cookies :(")
+        }
+
+        if (addedSprite.positionY === 5) {
+            addedSprite.sprite.remove();
+            poopArr.splice(poopArr.length);
+        }
+    })
+}
+
+// control sprite spawn rate and frequency
+const helloCookie = setInterval(spawnCookie, 1500);
+const helloRaindrop = setInterval(spawnRaindrop, 1500);
+const helloPoop = setInterval(spawnPoop, 1500);
+
+// control sprite fall speed
+const goodbyeCookie = setInterval(despawnCookie, 50);
+const goodbyeRaindrop = setInterval(despawnRaindrop, 50);
+const goodbyePoop = setInterval(despawnPoop, 50);
+
+
+
+//const scoreboard = document.querySelector('#scoreboard');
+//let inventory = document.querySelector('#cookieInventory');
