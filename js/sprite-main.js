@@ -36,7 +36,7 @@ class Cookie extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('../images/game.sprite.cookie.nobg.png')";
+            this.sprite.style.backgroundImage = "url('./images/game.sprite.cookie.nobg.png')";
         }
     }
     fallDown() {
@@ -59,7 +59,7 @@ class Raindrop extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('../images/game.sprite.raindrop.nobg.png')";
+            this.sprite.style.backgroundImage = "url('./images/game.sprite.raindrop.nobg.png')";
         }
     }
     fallDown() {
@@ -82,7 +82,7 @@ class Poop extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('../images/game.sprite.poop.nobg.png')";
+            this.sprite.style.backgroundImage = "url('./images/game.sprite.poop.nobg.png')";
         }
     }
     fallDown() {
