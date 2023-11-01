@@ -35,43 +35,48 @@ function spawnHero() {
 let cookieCounter = 1;
 document.getElementById("cookie-score").innerText = cookieCounter;
 
-function getCookie () {
-    cookieCounter += 1;
+function cookieCount (points) {
+    cookieCounter = cookieArr.length + points;
     document.getElementById("cookie-score").innerText = cookieCounter;
 }
-function getRaindrop () {
-    cookieCounter -= 1;
+
+// this is not subtracting
+function raindropCount (points) {
+    cookieCounter = raindropArr.length - points;
     document.getElementById("cookie-score").innerText = cookieCounter;
 
-    if (cookieCounter === 0) {
-        location.assign("./gameover.html")
+    if (cookieCounter <= 0) {
+        location.assign("./gameover.html");
     }
 }
-function getPoop () {
-    cookieCounter -= 3;
+
+// this is not subtracting
+function poopCount (points) {
+    cookieCounter = poopArr.length - points;
     document.getElementById("cookie-score").innerText = cookieCounter;
 
-    if (cookieCounter === 0) {
-        location.assign("./gameover.html")
+    if (cookieCounter <= 0) {
+        location.assign("./gameover.html");
     }
 }
-function getHero () {
-    cookieCounter += 4;
+
+// this is subtracting ????
+function heroCount (points) {
+    cookieCounter = heroArr.length + points;
     document.getElementById("cookie-score").innerText = cookieCounter;
 }
-
 
 function despawnCookie() {
     cookieArr.forEach((addedSprite) => {
         addedSprite.fallDown();
-
+           
         const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
-
+            
         if (collision) {
             addedSprite.sprite.remove();
             cookieArr.splice(cookieArr.length);
 
-            getCookie();
+            cookieCount(1);
         }
 
         if (addedSprite.positionY === 5) {
@@ -91,7 +96,8 @@ function despawnRaindrop() {
             addedSprite.sprite.remove();
             raindropArr.splice(raindropArr.length);
             
-            getRaindrop();
+            // this is not subtracting
+            raindropCount(1);
         }
 
         if (addedSprite.positionY === 5) {
@@ -111,7 +117,8 @@ function despawnPoop() {
             addedSprite.sprite.remove();
             poopArr.splice(poopArr.length);
             
-            getPoop();
+            // this is not subtracting
+            poopCount(3);
         }
 
         if (addedSprite.positionY === 5) {
@@ -131,7 +138,8 @@ function despawnHero() {
             addedSprite.sprite.remove();
             heroArr.splice(heroArr.length);
             
-            getHero();
+            // this is subtracting ????
+            heroCount(4);
         }
 
         if (addedSprite.positionY === 5) {
