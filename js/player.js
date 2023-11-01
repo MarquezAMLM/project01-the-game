@@ -12,7 +12,7 @@ class Player {
         this.playerElement.style.left = this.positionX + "vw";
         this.playerElement.style.bottom = this.positionY + "vh";
 
-        this.playerElement.style.backgroundImage = "url('./images/game.sprite.herocookie.nobg.png')";
+        this.playerElement.style.backgroundImage = "./images/game.sprite.herocookie.nobg.png";
     }
     moveLeft() {
         this.positionX -= 2.5;
