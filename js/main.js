@@ -32,6 +32,35 @@ function spawnHero() {
     heroArr.push(addHero);
 }
 
+let cookieCounter = 1;
+document.getElementById("cookie-score").innerText = cookieCounter;
+
+function getCookie () {
+    cookieCounter += 1;
+    document.getElementById("cookie-score").innerText = cookieCounter;
+}
+function getRaindrop () {
+    cookieCounter -= 1;
+    document.getElementById("cookie-score").innerText = cookieCounter;
+
+    if (cookieCounter === 0) {
+        location.assign("./gameover.html")
+    }
+}
+function getPoop () {
+    cookieCounter -= 3;
+    document.getElementById("cookie-score").innerText = cookieCounter;
+
+    if (cookieCounter === 0) {
+        location.assign("./gameover.html")
+    }
+}
+function getHero () {
+    cookieCounter += 4;
+    document.getElementById("cookie-score").innerText = cookieCounter;
+}
+
+
 function despawnCookie() {
     cookieArr.forEach((addedSprite) => {
         addedSprite.fallDown();
@@ -41,7 +70,8 @@ function despawnCookie() {
         if (collision) {
             addedSprite.sprite.remove();
             cookieArr.splice(cookieArr.length);
-            console.log("Cookies :)")
+
+            getCookie();
         }
 
         if (addedSprite.positionY === 5) {
@@ -60,7 +90,8 @@ function despawnRaindrop() {
         if (collision) {
             addedSprite.sprite.remove();
             raindropArr.splice(raindropArr.length);
-            console.log("Wet cookies :(")
+            
+            getRaindrop();
         }
 
         if (addedSprite.positionY === 5) {
@@ -79,7 +110,8 @@ function despawnPoop() {
         if (collision) {
             addedSprite.sprite.remove();
             poopArr.splice(poopArr.length);
-            console.log("...dirty cookies :(")
+            
+            getPoop();
         }
 
         if (addedSprite.positionY === 5) {
@@ -98,7 +130,8 @@ function despawnHero() {
         if (collision) {
             addedSprite.sprite.remove();
             heroArr.splice(heroArr.length);
-            console.log("Oh Yeah!")
+            
+            getHero();
         }
 
         if (addedSprite.positionY === 5) {
@@ -119,7 +152,3 @@ const speedCookie = setInterval(despawnCookie, 50);
 const speedRaindrop = setInterval(despawnRaindrop, 35);
 const speedPoop = setInterval(despawnPoop, 20);
 const speedHero = setInterval(despawnHero, 25);
-
-
-//const scoreboard = document.querySelector('#scoreboard');
-//let inventory = document.querySelector('#cookieInventory');
