@@ -94,8 +94,8 @@ class Raindrop extends Sprite {
 class Poop extends Sprite {
     constructor() {
         super();
-        this.width = 8;
-        this.height = 20;
+        this.width = 15;
+        this.height = 15;
         this.createSprite();
         this.sprite.classList.add("poop");
 
@@ -113,7 +113,7 @@ class Poop extends Sprite {
 class Hero extends Sprite {
     constructor() {
         super();
-        this.width = 10;
+        this.width = 6;
         this.height = 10;
         this.createSprite();
         this.sprite.classList.add("hero");

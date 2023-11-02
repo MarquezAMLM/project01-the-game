@@ -11,6 +11,7 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+
 const cookieArr = [];
 const raindropArr = [];
 const poopArr = [];
@@ -22,13 +23,14 @@ let raindropCounter = 0;
 let poopCounter = 0;
 let heroCounter = 0;
 
+
 function spawnCookie() {
     const addCookie = new Cookie();
     cookieArr.push(addCookie);
 }
 function cookieCount() {
     counterArr.push(1);
-    let scoreCount = 1 + (counterArr.length - counterArr.length);
+    let scoreCount = counterArr.length;
 
     if (scoreCount <= 0) {
         location.assign("./gameover.html");
@@ -39,7 +41,7 @@ function cookieCount() {
 function operationCookie() {
     cookieArr.forEach((addedSprite) => {
         addedSprite.fallDown();
-           
+
         const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
             
         if (collision) {
@@ -165,11 +167,12 @@ function operationHero() {
     })
 }
 
+
 document.getElementById("cookie-score").innerText = counterArr.length;
 
 // control sprite spawn rate and frequency
 const generateCookie = setInterval(spawnCookie, 3 * 1000);
-const generateRaindrop = setInterval(spawnRaindrop, 1000);
+const generateRaindrop = setInterval(spawnRaindrop, 600);
 const generatePoop = setInterval(spawnPoop, 5 * 1000);
 const generateHero = setInterval(spawnHero, 3 * 1000); // set to 20 * 1000
 
