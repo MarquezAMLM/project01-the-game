@@ -52,31 +52,33 @@ function spawnSprite(spriteType) {
 }
 
 const counterArr = [];
+let counterNegArr = [];
 let scoreCount = 0;
 
 function scoreCounter(spriteType) {
 
     if (spriteType === "cookie") {
         counterArr.push(1);
-        scoreCount = counterArr.length;
+        scoreCount += counterArr.length;
     }
 
     if (spriteType === "raindrop") {
-        counterArr.splice(counterArr.length - 1, 1);
-        scoreCount = counterArr.length;
+        counterNegArr = counterArr.splice(0, 1);
+        scoreCount -= counterNegArr.length;
     }
 
     if (spriteType === "poop") {
-        counterArr.splice(counterArr.length - 3, 3);
-        scoreCount = counterArr.length;
+        counterNegArr = counterArr.splice(0, 3);
+        scoreCount -= counterNegArr.length;
     }
 
     if (spriteType === "hero") {
-        counterArr.push(1, 1, 1, 1);
-        scoreCount = counterArr.length;
+        const heroPoints = [1, 1, 1];
+        counterArr.push(...heroPoints);
+        scoreCount += counterArr.length;
     }
-
-    if (scoreCount <= 0) {
+    
+    if (scoreCount <= 0 || counterArr.length <= 0) {
         location.assign("./gameover.html");
     }
 
@@ -110,7 +112,7 @@ function fallSprite(spriteType) {
                 sprite.sprite.remove();
 
                 scoreCounter("raindrop");
-                document.getElementById("cookie-score").innerText = cookieArr.length;
+                document.getElementById("cookie-score").innerText = counterNegArr.length;
             }
 
             if (sprite.positionY === 5) {
@@ -127,7 +129,7 @@ function fallSprite(spriteType) {
                 sprite.sprite.remove();
                 
                 scoreCounter("poop");
-                document.getElementById("cookie-score").innerText = cookieArr.length;
+                document.getElementById("cookie-score").innerText = counterNegArr.length;
             }
 
             if (sprite.positionY === 5) {
