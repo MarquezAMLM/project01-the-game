@@ -30,8 +30,8 @@ class Sprite {
     }
     createSprite() {
         if (!this.sprite) {
-            this.positionX = Math.floor(Math.random() * (82 - this.width + 1)) + 0;
-            this.positionY = 80;
+            this.positionX = Math.floor(Math.random() * (72 - this.width + 1)) + 0;
+            this.positionY = 62;
 
             this.sprite = document.createElement("div");
             this.sprite.classList.add("sprite");

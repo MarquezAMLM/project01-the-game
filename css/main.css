@@ -1,37 +1,26 @@
 body {
-    background-color: ivory;
+    background-color: antiquewhite;
+    height: 90vh;
+    width: 90vw;
 }
 
-#cookie-container > img {
-    width: 50px;
-    width: 50px;
-    margin-right: 25px;
-    padding: 15px;
+#play-button {
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    margin: auto;
+    border-radius: 15px;
+    left: 45%;
+    position: absolute;
 }
 
-#raindrop-container > img {
-    width: 35px;
-    height: 50px;
-    margin-right: 25px;
-    padding: 15px;
-}
-
-#poop-container > img {
-    width: 60px;
-    height: 70px;
-    margin-right: 25px;
-    padding: 15px;
-}
-
-#hero-container > img {
-    width: 80px;
-    height: 80px;
-    margin-right: 25px;
-    padding: 15px;
-}
-
+/*
+BELOW:
+start game document (index.html)
+*/
 .play-legend {
     font-size: 25px;
+    line-height: 2;
     margin: 20px;
     font-weight: bold;
     display: grid;
@@ -40,15 +29,54 @@ body {
     justify-content: center;
 }
 
-#play-button {
-    text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 60px;
-    margin: auto;
-    left: 45%;
-    position: absolute;
+.play-legend span {
+    color: brown;
 }
 
+#player-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#image-billy {
+    width: 50px;
+    width: 70px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#image-cookie {
+    width: 50px;
+    width: 50px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#image-raindrop {
+    width: 35px;
+    height: 50px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#image-poop {
+    width: 60px;
+    height: 70px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+#image-hero {
+    width: 80px;
+    height: 80px;
+    margin-right: 25px;
+    padding: 15px;
+}
+
+/*
+BELOW:
+main game document (play.html)
+*/
 #title {
     text-align: center;
     margin-top: 20px;
@@ -57,39 +85,37 @@ body {
 }
 
 #title > h2 {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 36px;
 }
 
 #scoreboard {
     text-align: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 50px;
-    padding-top: 20px;
+    font-size: 30px;
+    padding-top: 10px;
 }
 
 #cookie-score {
-    font-size: 60px;
+    font-size: 40px;
 }
 
 #board {
     background-image: url("../images/game.background.png");
-    height: 80vh;
-    width: 85vw;
-    object-fit: contain;
+    height: 65vh;
+    width: 75vw;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
     margin: auto;
     margin-top: 30px;
     margin-left: 7%;
     padding-top: 50px;
     border: 5px solid brown;
     border-radius: 55px;
-	background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center bottom;
-	background-size: cover;
 	padding-top: 50px;
-    position: absolute;
-
 }
 
 #player {
@@ -104,6 +130,10 @@ body {
     background-size: contain;
 }
 
+/*
+BELOW:
+game over document (gameover.html)
+*/
 #game-over {
     display: grid;
     align-items: center;
@@ -114,11 +144,12 @@ body {
     margin-top: 20px;
     margin-bottom: 50px;
     padding: 20px;
+    line-height: 2;
 }
 
 #game-over > h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 115px;
+    font-size: 135px;
 }
 
 #game-over > h2 {
