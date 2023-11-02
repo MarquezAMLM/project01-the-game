@@ -11,26 +11,70 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+function detectCollision(player, sprite) {
+
+    if (player.positionX < sprite.positionX + sprite.width && player.positionX + player.width > sprite.positionX && player.positionY < sprite.positionY + sprite.height && player.positionY + player.height > sprite.positionY) {
+        
+        return 1;
+    }
+    else {
+
+        return 0;
+    }
+}
 
 const cookieArr = [];
 const raindropArr = [];
 const poopArr = [];
 const heroArr = [];
 
+function spawnSprite(spriteType) {
+
+    if (spriteType === "cookie") {
+        const cookie = new Cookie();
+        cookieArr.push(cookie);
+    }
+
+    if (spriteType === "raindrop") {
+        const raindrop = new Raindrop();
+        raindropArr.push(raindrop);
+    }
+
+    if (spriteType === "poop") {
+        const poop = new Poop();
+        poopArr.push(poop);
+    }
+
+    if (spriteType === "hero") {
+        const hero = new Hero();
+        heroArr.push(hero);
+    }
+}
+
 const counterArr = [];
-let cookieCounter = 0;
-let raindropCounter = 0;
-let poopCounter = 0;
-let heroCounter = 0;
+let scoreCount = 0;
 
+function scoreCounter(spriteType) {
 
-function spawnCookie() {
-    const addCookie = new Cookie();
-    cookieArr.push(addCookie);
-}
-function cookieCount() {
-    counterArr.push(1);
-    let scoreCount = counterArr.length;
+    if (spriteType === "cookie") {
+        counterArr.push(1);
+        scoreCount = counterArr.length;
+    }
+
+    if (spriteType === "raindrop") {
+        counterArr.splice(counterArr.length - 1, 1);
+        scoreCount = counterArr.length;
+    }
+
+    if (spriteType === "poop") {
+        counterArr.splice(counterArr.length - 3, 3);
+        scoreCount = counterArr.length;
+    }
+
+    if (spriteType === "hero") {
+        counterArr.push(1, 1, 1, 1);
+        scoreCount = counterArr.length;
+    }
 
     if (scoreCount <= 0) {
         location.assign("./gameover.html");
@@ -38,146 +82,109 @@ function cookieCount() {
 
     return scoreCount;
 }
-function operationCookie() {
-    cookieArr.forEach((addedSprite) => {
-        addedSprite.fallDown();
 
-        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
-            
-        if (collision) {
-            addedSprite.sprite.remove();
-            cookieArr.splice(cookieArr.length);
-            
-            cookieCounter = cookieCount();
-            document.getElementById("cookie-score").innerText = cookieCounter;
-        }
+function fallSprite(spriteType) {
+
+    if (spriteType === "cookie") {
+        cookieArr.forEach((sprite) => {
+            sprite.fallDown();
     
-        if (addedSprite.positionY === 5) {
-            addedSprite.sprite.remove();
-            cookieArr.splice(cookieArr.length);
-        }
-    })
-}
+            if (detectCollision(player, sprite)) {
+                sprite.sprite.remove();
+                
+                scoreCounter("cookie");
+                document.getElementById("cookie-score").innerText = cookieArr.length;
+            }
 
-
-function spawnRaindrop() {
-    const addRaindrop = new Raindrop();
-    raindropArr.push(addRaindrop);
-}
-function raindropCount() {
-    counterArr.pop();
-    const scoreCount = counterArr.length;
-
-    if (scoreCount <= 0) {
-        location.assign("./gameover.html");
+            if (sprite.positionY === 5) {
+                sprite.sprite.remove();
+            }
+        })
     }
 
-    return scoreCount;
-}
-function operationRaindrop() {
-    raindropArr.forEach((addedSprite) => {
-        addedSprite.fallDown();
+    if (spriteType === "raindrop") {
+        raindropArr.forEach((sprite) => {
+            sprite.fallDown();
+    
+            if (detectCollision(player, sprite)) {
+                sprite.sprite.remove();
 
-        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
+                scoreCounter("raindrop");
+                document.getElementById("cookie-score").innerText = cookieArr.length;
+            }
 
-        if (collision) {
-            addedSprite.sprite.remove();
-            raindropArr.splice(raindropArr.length);
-            
-            raindropCounter = raindropCount();
-            document.getElementById("cookie-score").innerText = raindropCounter;
-        }
-
-        if (addedSprite.positionY === 5) {
-            addedSprite.sprite.remove();
-            raindropArr.splice(raindropArr.length);
-        }
-    })
-}
-
-
-function spawnPoop() {
-    const addPoop = new Poop();
-    poopArr.push(addPoop);
-}
-function poopCount() {
-    counterArr.splice(counterArr.length - 3, 3);
-    const scoreCount = counterArr.length;
-
-    if (scoreCount <= 0) {
-        location.assign("./gameover.html");
+            if (sprite.positionY === 5) {
+                sprite.sprite.remove();
+            }
+        })
     }
 
-    return scoreCount;
-}
-function operationPoop() {
-    poopArr.forEach((addedSprite) => {
-        addedSprite.fallDown();
+    if (spriteType === "poop") {
+        poopArr.forEach((sprite) => {
+            sprite.fallDown();
+    
+            if (detectCollision(player, sprite)) {
+                sprite.sprite.remove();
+                
+                scoreCounter("poop");
+                document.getElementById("cookie-score").innerText = cookieArr.length;
+            }
 
-        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
-
-        if (collision) {
-            addedSprite.sprite.remove();
-            poopArr.splice(poopArr.length);
-            
-            poopCounter = poopCount();
-            document.getElementById("cookie-score").innerText = poopCounter;
-        }
-
-        if (addedSprite.positionY === 5) {
-            addedSprite.sprite.remove();
-            poopArr.splice(poopArr.length);
-        }
-    })
-}
-
-
-function spawnHero() {
-    const addHero = new Hero();
-    heroArr.push(addHero);
-}
-function heroCount() {
-    counterArr.push(1, 1, 1, 1);
-    const scoreCount = counterArr.length;
-
-    if (scoreCount <= 0) {
-        location.assign("./gameover.html");
+            if (sprite.positionY === 5) {
+                sprite.sprite.remove();
+            }
+        })
     }
 
-    return scoreCount;
-}
-function operationHero() {
-    heroArr.forEach((addedSprite) => {
-        addedSprite.fallDown();
+    if (spriteType === "hero") {
+        heroArr.forEach((sprite) => {
+            sprite.fallDown();
+    
+            if (detectCollision(player, sprite)) {
+                sprite.sprite.remove();
 
-        const collision = player.positionX < addedSprite.positionX + addedSprite.width && player.positionX + player.width > addedSprite.positionX && player.positionY < addedSprite.positionY + addedSprite.height && player.positionY + player.height > addedSprite.positionY;
+                scoreCounter("hero");
+                document.getElementById("cookie-score").innerText = cookieArr.length;
+            }
 
-        if (collision) {
-            addedSprite.sprite.remove();
-            heroArr.splice(heroArr.length);
-            
-            heroCounter = heroCount();
-            document.getElementById("cookie-score").innerText = heroCounter;
-        }
-
-        if (addedSprite.positionY === 5) {
-            addedSprite.sprite.remove();
-            heroArr.splice(heroArr.length);
-        }
-    })
+            if (sprite.positionY === 5) {
+                sprite.sprite.remove();
+            }
+        })
+    }
 }
 
+setInterval(function() {
+    spawnSprite("cookie");
+}, 3 * 1000);
 
-document.getElementById("cookie-score").innerText = counterArr.length;
+setInterval(function() {
+    spawnSprite("raindrop");
+}, 600);
 
-// control sprite spawn rate and frequency
-const generateCookie = setInterval(spawnCookie, 3 * 1000);
-const generateRaindrop = setInterval(spawnRaindrop, 600);
-const generatePoop = setInterval(spawnPoop, 5 * 1000);
-const generateHero = setInterval(spawnHero, 3 * 1000); // set to 20 * 1000
+setInterval(function() {
+    spawnSprite("poop");
+}, 5 * 1000);
 
-// control sprite fall speed
-const speedCookie = setInterval(operationCookie, 50);
-const speedRaindrop = setInterval(operationRaindrop, 35);
-const speedPoop = setInterval(operationPoop, 20);
-const speedHero = setInterval(operationHero, 25);
+setInterval(function() {
+    spawnSprite("hero");
+}, 3 * 1000); // set to 20 * 1000
+
+
+setInterval(function() {
+    fallSprite("cookie");
+}, 50);
+
+setInterval(function() {
+    fallSprite("raindrop");
+}, 35);
+
+setInterval(function() {
+    fallSprite("poop");
+}, 20);
+
+setInterval(function() {
+    fallSprite("hero");
+}, 25);
+
+document.getElementById("cookie-score").innerText = scoreCount;
