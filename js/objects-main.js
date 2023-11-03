@@ -3,7 +3,7 @@ class Player {
         this.width = 5;
         this.height = 10;
         this.positionX = 43 - (this.width / 2);
-        this.positionY = 5;
+        this.positionY = 3;
 
         this.playerElement = document.getElementById("player");
 

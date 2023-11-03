@@ -63,17 +63,17 @@ function scoreCounter(spriteType) {
     }
 
     if (spriteType === "raindrop") {
-        counterNegArr = counterArr.splice(0, 1);
+        counterNegArr = counterArr.splice(0, 2);
         scoreCount -= counterNegArr.length;
     }
 
     if (spriteType === "poop") {
-        counterNegArr = counterArr.splice(0, 3);
+        counterNegArr = counterArr.splice(0, 5);
         scoreCount -= counterNegArr.length;
     }
 
     if (spriteType === "hero") {
-        const heroPoints = [1, 1, 1];
+        const heroPoints = [1, 1, 1, 1, 1];
         counterArr.push(...heroPoints);
         scoreCount += counterArr.length;
     }
@@ -82,11 +82,9 @@ function scoreCounter(spriteType) {
         location.assign("./gameover.html");
     }
 
-    if (scoreCount >= 1000) {
+    if (scoreCount >= 1000 * 1000 && counterArr.length > 100) {
         location.assign("./gamewon.html");
     }
-
-    return scoreCount;
 }
 
 function fallSprite(spriteType) {
@@ -97,7 +95,7 @@ function fallSprite(spriteType) {
     
             if (detectCollision(player, sprite)) {
                 sprite.sprite.remove();
-                
+
                 scoreCounter("cookie");
                 document.getElementById("cookie-score").innerText = cookieArr.length;
             }
@@ -158,6 +156,8 @@ function fallSprite(spriteType) {
             }
         })
     }
+
+    return scoreCounter;
 }
 
 setInterval(function() {
@@ -174,7 +174,7 @@ setInterval(function() {
 
 setInterval(function() {
     spawnSprite("hero");
-}, 3 * 1000); // set to 20 * 1000
+}, 20 * 1000);
 
 
 setInterval(function() {

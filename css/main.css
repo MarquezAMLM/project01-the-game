@@ -72,23 +72,23 @@ main game document (play.html)
     text-align: center;
     margin-top: 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 135px;
+    font-size: 50px;
 }
 
 #title-two {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 70px;
+    font-size: 30px;
 }
 
 #scoreboard {
     text-align: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     padding-top: 10px;
 }
 
 #cookie-score {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 #board {
@@ -119,6 +119,11 @@ main game document (play.html)
     position: absolute;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+#quit-button {
+    position: relative;
+    border-radius: 5px;
 }
 
 /*
