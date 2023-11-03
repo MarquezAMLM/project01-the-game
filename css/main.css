@@ -2,16 +2,7 @@ body {
     background-color: antiquewhite;
     height: 90vh;
     width: 90vw;
-}
-
-#play-button {
     text-align: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 60px;
-    margin: auto;
-    border-radius: 15px;
-    left: 45%;
-    position: absolute;
 }
 
 /*
@@ -77,16 +68,16 @@ start game document (index.html)
 BELOW:
 main game document (play.html)
 */
-#title {
+#title-one {
     text-align: center;
     margin-top: 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 60px;
+    font-size: 135px;
 }
 
-#title > h2 {
+#title-two {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 36px;
+    font-size: 70px;
 }
 
 #scoreboard {
@@ -134,25 +125,40 @@ main game document (play.html)
 BELOW:
 game over document (gameover.html)
 */
-#game-over {
+#bookend {
     display: grid;
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 50px;
     padding: 20px;
-    line-height: 2;
 }
 
-#game-over > h1 {
+#bookend-one {
+    margin-top: 30px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 135px;
+    font-size: 150px;
 }
 
-#game-over > h2 {
+#bookend-two {
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 36px;
+    font-size: 38px;
+}
+
+
+
+
+#start-game {
+    display: block;
+    max-width: 600px;
+    margin: auto;
+    
+}
+
+#play-button {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 60px;
+    margin: auto;
+    border-radius: 15px;
+    left: 45%;
 }

@@ -82,6 +82,10 @@ function scoreCounter(spriteType) {
         location.assign("./gameover.html");
     }
 
+    if (scoreCount >= 1000) {
+        location.assign("./gamewon.html");
+    }
+
     return scoreCount;
 }
 
