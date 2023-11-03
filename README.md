@@ -15,6 +15,9 @@ Catching (collision / contact) with certain elements increases points, while doi
 
 Reaching zero points ends the game in defeat, and reaching a certain maximum ends the game in victory.
 
+## Demo
+[Play the game here](https://marquezamlm.github.io/project01game/)
+
 ## Work in Progress
 ### Fix:
 - [X]    objects properly disappearing when reaching the ground
