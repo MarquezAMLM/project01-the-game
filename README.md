@@ -15,7 +15,7 @@
 <img width="90%" src="./images/readme-image02.png">
 
 ## Demo
-[Play the game here](https://marquezamlm.github.io/project01game/)
+[Play the game here](https://mqzmcs.github.io/project01game/)
 
 ## Work in Progress
 ### Fix:
