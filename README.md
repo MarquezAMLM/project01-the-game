@@ -1,40 +1,35 @@
-# Billy Biscuit -Cookie Collector-
-Module 01, Week 03, Project 01: Game
+# Billy Biscuit: Cookie Collector
+#### Module 01, Week 03, Project 01
+## Browser Game
+<img width="90%" src="./images/readme-image01.png">
 
-## Description
-Game built with web technologies (HTML, CSS, JavaScript).
-
-<img src="./images/billyBiscuit.README.png">
+## Technologies Used
+- HTML
+- CSS (vanilla)
+- JavaScript
+    - objects
+    - classes
+    - collision detection
 
 ## How to Play
-All necessary information exists on the title screen but to summarize:
-
-Use the LEFT and RIGHT arrow keys to move the player (Billy) horizontally.
-
-Catching (collision / contact) with certain elements increases points, while doing the same with other elements decreases points.
-
-Reaching zero points ends the game in defeat, and reaching a certain maximum ends the game in victory.
+<img width="90%" src="./images/readme-image02.png">
 
 ## Demo
 [Play the game here](https://marquezamlm.github.io/project01game/)
 
 ## Work in Progress
 ### Fix:
-- [X]    objects properly disappearing when reaching the ground
-- [X]    objects properly disappearing when contacting the player
+- [X]   objects properly disappearing when reaching the ground
+- [X]   objects properly disappearing when contacting the player
 - [ ]   restricting player movement to within the game space
-- [ ]   properly aligning/re-aligning elements when viewport sizes differ
 
 ### Functionality:
 - [X]   implement point counter
 - [ ]   make point counter return precise numbers (possibly related to...)
 - [ ]   return single instance of collision per element instead of multiple (inflates the point counter)
-- [ ]   in-game pop-up notifications
-- [ ]   incremental increase in game difficulty (faster sprites, increasing varieties of elements, more frequent spawns, projectiles, etc.)
-- [ ]   multiple lives, collectible elements to increase lives
 
 ## UX:
-- [ ]   beautifying game menus, including proper positioning of static elements, etc.
+- [X]   beautifying game menus, including proper positioning of static elements, etc.
 - [ ]   background music and sound effects
 
 ## Code:

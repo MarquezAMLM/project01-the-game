@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Biscuit Billy</title>
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/main.css">
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billy Biscuit</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
 
-        <div id="title">
-            <h1 id="title-one">Billy Biscuit</h1>
-            <h2 id="title-two">- Cookie Collector -</h2>
-        </div>
-        
-        <div id="scoreboard">
-            <div>Pocketed Cookies: <span id="cookie-score"></span>
-            </div>
-        </div>
+<body>
+    <div class="title-container">
+        <h1>Billy Biscuit</h1>
+        <h2>Cookie Collector</h2>
+    </div>
 
-        <div id="board">
-            <div id="player"></div>
+    <div>
+        <div id="scoreboard">Pocketed Cookies: <span id="cookie-score"></span>
         </div>
+    </div>
 
-        <div id="quit-game">
-            <button id="quit-button"><a href="./index.html">Return to Title</a></button>
-        </div>
+    <div id="board">
+        <div id="player"></div>
+    </div>
 
-        <script src="./js/objects-main.js"></script>
-        <script src="./js/main.js"></script>
-    </body>
+    <div>
+        <a id="quit-btn-container" href="./index.html">
+            <button class="play-btn">
+                QUIT
+            </button>
+        </a>
+    </div>
+
+    <script src="./js/objects-main.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
 </html>

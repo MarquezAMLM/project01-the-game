@@ -1,9 +1,9 @@
 class Player {
     constructor() {
-        this.width = 5;
-        this.height = 10;
-        this.positionX = 43 - (this.width / 2);
-        this.positionY = 3;
+        this.width = 10;
+        this.height = 15;
+        this.positionX = 40 - (this.width / 2);
+        this.positionY = 5;
 
         this.playerElement = document.getElementById("player");
 
@@ -12,14 +12,16 @@ class Player {
         this.playerElement.style.left = this.positionX + "vw";
         this.playerElement.style.bottom = this.positionY + "vh";
 
-        this.playerElement.style.backgroundImage = "url('./images/game.sprite.player.right.nobg.png')";
+        this.playerElement.style.backgroundImage = "url('./images/sprite-player-right.png')";
     }
     moveLeft() {
-        this.positionX -= 3;
+        this.playerElement.style.backgroundImage = "url('./images/sprite-player-left.png')";
+        this.positionX -= 4;
         this.playerElement.style.left = this.positionX + "vw";
     }
     moveRight() {
-        this.positionX += 3;
+        this.playerElement.style.backgroundImage = "url('./images/sprite-player-right.png')";
+        this.positionX += 4;
         this.playerElement.style.left = this.positionX + "vw";
     }
 }
@@ -65,9 +67,9 @@ class Cookie extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('./images/game.sprite.cookie.nobg.png')";
-        }
-        
+            this.sprite.style.backgroundImage = "url('./images/sprite-cookie.png')";
+        }     
+
         this.fallDown();
     }
 }
@@ -84,7 +86,7 @@ class Raindrop extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('./images/game.sprite.raindrop.nobg.png')";
+            this.sprite.style.backgroundImage = "url('./images/sprite-raindrop.png')";
         }
 
         this.fallDown();
@@ -103,7 +105,7 @@ class Poop extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('./images/game.sprite.poop.nobg.png')";
+            this.sprite.style.backgroundImage = "url('./images/sprite-poop.png')";
         }
 
         this.fallDown();
@@ -122,7 +124,7 @@ class Hero extends Sprite {
             this.sprite.style.width = this.width + "vw";
             this.sprite.style.height = this.height + "vh";
 
-            this.sprite.style.backgroundImage = "url('./images/game.sprite.herocookie.nobg.png')";
+            this.sprite.style.backgroundImage = "url('./images/sprite-hero.png')";
         }
 
         this.fallDown();

@@ -1,112 +1,107 @@
-body {
-    background-color: antiquewhite;
-    height: 90vh;
-    width: 90vw;
+.title-container {
+    font-weight: 900;
     text-align: center;
+    line-height: 0.1;
+    padding: 1rem 0 2rem 0;
+    font-family: var(--font-stack-0);
 }
 
-/*
-BELOW:
-start game document (index.html)
-*/
-.play-legend {
-    font-size: 25px;
-    line-height: 2;
-    margin: 20px;
-    font-weight: bold;
-    display: grid;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.title-container h1 {
+    font-size: 3.5rem;
 }
 
-.play-legend span {
-    color: brown;
+.title-container h2 {
+    color: var(--bright-2);
 }
 
-#player-container {
+.legend-body {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
-#image-billy {
-    width: 50px;
-    width: 70px;
-    margin-right: 25px;
-    padding: 15px;
-}
+.legend-container {
+    display: flex;
+    align-items: center;
+    }
 
-#image-cookie {
-    width: 50px;
-    width: 50px;
-    margin-right: 25px;
-    padding: 15px;
-}
-
-#image-raindrop {
-    width: 35px;
+.legend-image-container {
+    background-color: var(--light-0);
+    border: 5px solid var(--bright-1);
+    border-radius: 20%;
     height: 50px;
-    margin-right: 25px;
-    padding: 15px;
+    width: 50px;
+    padding: 1rem;
+    margin: 1rem;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#image-poop {
-    width: 60px;
+.legend-image-l {
     height: 70px;
-    margin-right: 25px;
-    padding: 15px;
+    width: auto;
 }
 
-#image-hero {
-    width: 80px;
-    height: 80px;
-    margin-right: 25px;
-    padding: 15px;
+.legend-image-s {
+    height: 30px;
+    width: auto;
+}
+
+.legend-text-container {
+    max-width: 90%;
+    height: auto;
+    font-size: 1.5rem;
+    font-family: var(--font-stack-1);
+}
+
+.legend-image-container:hover {
+    background-color: var(--bright-0);
+    border-color: var(--bright-2);
+}
+
+.legend-image-container:hover + .legend-text-container {
+    font-size: 1.8rem;
+    color: var(--bright-2);
 }
 
 /*
 BELOW:
 main game document (play.html)
 */
-#title-one {
-    text-align: center;
-    margin-top: 20px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 50px;
-}
-
-#title-two {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 30px;
-}
 
 #scoreboard {
-    text-align: center;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 25px;
-    padding-top: 10px;
+    position: fixed;
+    top: 17%;
+    left: 16%;
+    font-family: var(--font-stack-0);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--dark-1);
+    z-index: 1000;
 }
 
 #cookie-score {
-    font-size: 30px;
+    font-size: 2.1rem;
+    padding-left: 0.5rem;
 }
 
 #board {
-    background-image: url("../images/game.background.png");
-    height: 65vh;
-    width: 75vw;
-    position: absolute;
+    background-image: url("../images/game-bg.png");
+    height: 75%;
+    width: 90%;
+    position: relative;
     background-size: cover;
     background-position: center;
     object-fit: cover;
     background-repeat: no-repeat;
-    margin: auto;
-    margin-top: 30px;
-    margin-left: 7%;
-    padding-top: 50px;
-    border: 5px solid brown;
-    border-radius: 55px;
-	padding-top: 50px;
+
+    margin: 0 auto;
+    border: 5px solid var(--bright-2);
+    border-radius: 20px;
 }
 
 #player {
@@ -124,46 +119,4 @@ main game document (play.html)
 #quit-button {
     position: relative;
     border-radius: 5px;
-}
-
-/*
-BELOW:
-game over document (gameover.html)
-*/
-#bookend {
-    display: grid;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-}
-
-#bookend-one {
-    margin-top: 30px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 150px;
-}
-
-#bookend-two {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 38px;
-}
-
-
-
-
-#start-game {
-    display: block;
-    max-width: 600px;
-    margin: auto;
-    
-}
-
-#play-button {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 60px;
-    margin: auto;
-    border-radius: 15px;
-    left: 45%;
 }

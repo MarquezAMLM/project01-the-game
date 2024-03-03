@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Madimi+One&family=Ojuju:wght@200..800&display=swap');
+
+:root {
+	line-height: 1;
+	font-weight: 400;
+	text-decoration: none;
+	font-size: 100%;
+	font: inherit;
+
+	--dark-0: #080C00;
+	--dark-1: #012A36;
+	--dark-2: #29274C;
+	
+	--light-0: #F1EDEE;
+	--light-1: #DBDBDB;
+
+	--bright-0: #39ED70;
+	--bright-1: #8885EC;
+	--bright-2: #FF299C;
+
+	background-color: var(--dark-2);
+	color: var(--light-1);
+
+	--font-stack-0: "Madimi One", Verdana;
+	--font-stack-1: "Josefin Sans", Verdana;
+	--font-stack-2: "Ojuju", Verdana; 
+}
+
+html,
+body {
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+	height: 100%;
+	width: 90%;
+	box-sizing: content-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+	text-decoration: none;
+}
+
+#quit-btn-container {
+	position: fixed;
+	top: 2rem;
+	right: 15%;
+}
+
+.btn-container {
+	display: flex;
+	justify-content: center;
+}
+
+.play-btn {
+	margin: 1rem;
+    padding: 1rem;
+    border: 5px solid var(--bright-1);
+    border-radius: 45%;
+	font-family: var(--font-stack-2);
+    font-size: 1.8rem;
+    font-weight: 900;
+	color: var(--dark-2);
+}
+
+.play-btn:hover {
+    transform: translateX(-2px) translateY(2px);
+    background-color: var(--bright-0);
+    border-color: var(--bright-2);
+}
