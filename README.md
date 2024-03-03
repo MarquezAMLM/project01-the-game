@@ -11,6 +11,8 @@
     - classes
     - collision detection
 
+- Images and sprites made by me on Microsoft Paint and Paint 3D
+
 ## How to Play
 <img width="90%" src="./images/readme-image02.png">
 
