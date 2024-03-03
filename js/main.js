@@ -14,14 +14,14 @@ document.addEventListener("keydown", (e) => {
 function detectCollision(player, sprite) {
 
     if (player.positionX < sprite.positionX + sprite.width && player.positionX + player.width > sprite.positionX && player.positionY < sprite.positionY + sprite.height && player.positionY + player.height > sprite.positionY) {
-        
-        return 1;
+
+        return true;
     }
     else {
 
-        return 0;
+        return false;
     }
-}
+};
 
 const cookieArr = [];
 const raindropArr = [];
@@ -49,59 +49,46 @@ function spawnSprite(spriteType) {
         const hero = new Hero();
         heroArr.push(hero);
     }
-}
+};
 
-const counterArr = [];
-let counterNegArr = [];
 let scoreCount = 0;
 
-function scoreCounter(spriteType) {
+const scoreTally = {
+    pointsCookie: function () {
+        scoreCount += 1;
+    },
+    pointsRaindrop: function () {
+        scoreCount -= 1;
+    },
+    pointsPoop: function () {
+        scoreCount -= 3;
+    },
+    pointsHero: function () {
+        scoreCount += 5;
+    }
+};
 
-    if (spriteType === "cookie") {
-        counterArr.push(1);
-        scoreCount += counterArr.length;
-    }
-
-    if (spriteType === "raindrop") {
-        counterNegArr = counterArr.splice(0, 2);
-        scoreCount -= counterNegArr.length;
-    }
-
-    if (spriteType === "poop") {
-        counterNegArr = counterArr.splice(0, 5);
-        scoreCount -= counterNegArr.length;
-    }
-
-    if (spriteType === "hero") {
-        const heroPoints = [1, 1, 1, 1, 1];
-        counterArr.push(...heroPoints);
-        scoreCount += counterArr.length;
-    }
-    
-    if (scoreCount <= 0 || counterArr.length <= 0) {
-        location.assign("./gameover.html");
-    }
-
-    if (scoreCount >= 1000 * 1000 && counterArr.length > 100) {
-        location.assign("./gamewon.html");
-    }
-}
+let collisionCookie = false;
+let collisionRaindrop = false;
+let collisionPoop = false;
+let collisionHero = false;
 
 function fallSprite(spriteType) {
 
     if (spriteType === "cookie") {
         cookieArr.forEach((sprite) => {
             sprite.fallDown();
-    
-            if (detectCollision(player, sprite)) {
-                sprite.sprite.remove();
 
-                scoreCounter("cookie");
-                document.getElementById("cookie-score").innerText = cookieArr.length;
+            if (detectCollision(player, sprite) && !collisionCookie) {
+                sprite.sprite.remove();
+                scoreTally.pointsCookie();
+                document.getElementById("cookie-score").innerText = scoreCount;
+                collisionCookie = true;
             }
 
             if (sprite.positionY === 5) {
                 sprite.sprite.remove();
+                collisionCookie = false;
             }
         })
     }
@@ -109,16 +96,17 @@ function fallSprite(spriteType) {
     if (spriteType === "raindrop") {
         raindropArr.forEach((sprite) => {
             sprite.fallDown();
-    
-            if (detectCollision(player, sprite)) {
-                sprite.sprite.remove();
 
-                scoreCounter("raindrop");
-                document.getElementById("cookie-score").innerText = counterNegArr.length;
+            if (detectCollision(player, sprite) && !collisionRaindrop) {
+                sprite.sprite.remove();
+                scoreTally.pointsRaindrop();
+                document.getElementById("cookie-score").innerText = scoreCount;
+                collisionRaindrop = true;
             }
 
             if (sprite.positionY === 5) {
                 sprite.sprite.remove();
+                collisionRaindrop = false;
             }
         })
     }
@@ -126,16 +114,17 @@ function fallSprite(spriteType) {
     if (spriteType === "poop") {
         poopArr.forEach((sprite) => {
             sprite.fallDown();
-    
-            if (detectCollision(player, sprite)) {
+
+            if (detectCollision(player, sprite) && !collisionPoop) {
                 sprite.sprite.remove();
-                
-                scoreCounter("poop");
-                document.getElementById("cookie-score").innerText = counterNegArr.length;
+                scoreTally.pointsPoop();
+                document.getElementById("cookie-score").innerText = scoreCount;
+                collisionPoop = true;
             }
 
             if (sprite.positionY === 5) {
                 sprite.sprite.remove();
+                collisionPoop = false;
             }
         })
     }
@@ -143,53 +132,59 @@ function fallSprite(spriteType) {
     if (spriteType === "hero") {
         heroArr.forEach((sprite) => {
             sprite.fallDown();
-    
-            if (detectCollision(player, sprite)) {
-                sprite.sprite.remove();
 
-                scoreCounter("hero");
-                document.getElementById("cookie-score").innerText = cookieArr.length;
+            if (detectCollision(player, sprite) && !collisionHero) {
+                sprite.sprite.remove();
+                scoreTally.pointsHero();
+                document.getElementById("cookie-score").innerText = scoreCount;
+                collisionHero = true;
             }
 
             if (sprite.positionY === 5) {
                 sprite.sprite.remove();
+                collisionHero = false;
             }
         })
     }
 
-    return scoreCounter;
-}
+    if (scoreCount >= 12) {
+        location.assign("./gamewon.html");
+    }
+    else if (scoreCount < 0) {
+        location.assign("./gameover.html");
+    }
+};
 
-setInterval(function() {
+setInterval(function () {
     spawnSprite("cookie");
 }, 3 * 1000);
 
-setInterval(function() {
+setInterval(function () {
     spawnSprite("raindrop");
 }, 600);
 
-setInterval(function() {
+setInterval(function () {
     spawnSprite("poop");
 }, 5 * 1000);
 
-setInterval(function() {
+setInterval(function () {
     spawnSprite("hero");
 }, 20 * 1000);
 
 
-setInterval(function() {
+setInterval(function () {
     fallSprite("cookie");
 }, 50);
 
-setInterval(function() {
+setInterval(function () {
     fallSprite("raindrop");
 }, 35);
 
-setInterval(function() {
+setInterval(function () {
     fallSprite("poop");
 }, 20);
 
-setInterval(function() {
+setInterval(function () {
     fallSprite("hero");
 }, 25);
 

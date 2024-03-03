@@ -16,12 +16,12 @@ class Player {
     }
     moveLeft() {
         this.playerElement.style.backgroundImage = "url('./images/sprite-player-left.png')";
-        this.positionX -= 4;
+        this.positionX -= 3;
         this.playerElement.style.left = this.positionX + "vw";
     }
     moveRight() {
         this.playerElement.style.backgroundImage = "url('./images/sprite-player-right.png')";
-        this.positionX += 4;
+        this.positionX += 3;
         this.playerElement.style.left = this.positionX + "vw";
     }
 }
@@ -96,8 +96,8 @@ class Raindrop extends Sprite {
 class Poop extends Sprite {
     constructor() {
         super();
-        this.width = 15;
-        this.height = 15;
+        this.width = 10;
+        this.height = 10;
         this.createSprite();
         this.sprite.classList.add("poop");
 
