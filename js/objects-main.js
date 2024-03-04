@@ -1,7 +1,7 @@
 class Player {
     constructor() {
-        this.width = 10;
-        this.height = 15;
+        this.width = 5;
+        this.height = 10;
         this.positionX = 40 - (this.width / 2);
         this.positionY = 5;
 
@@ -77,8 +77,8 @@ class Cookie extends Sprite {
 class Raindrop extends Sprite {
     constructor() {
         super();
-        this.width = 2;
-        this.height = 4;
+        this.width = 1;
+        this.height = 3;
         this.createSprite();
         this.sprite.classList.add("raindrop");
 

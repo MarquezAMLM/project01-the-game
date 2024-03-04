@@ -22,9 +22,11 @@
 }
 
 .legend-container {
+    margin: 0 auto;
+    width: 45%;
     display: flex;
     align-items: center;
-    }
+}
 
 .legend-image-container {
     background-color: var(--light-0);
@@ -63,8 +65,7 @@
     border-color: var(--bright-2);
 }
 
-.legend-image-container:hover + .legend-text-container {
-    font-size: 1.8rem;
+.legend-image-container:hover+.legend-text-container {
     color: var(--bright-2);
 }
 
