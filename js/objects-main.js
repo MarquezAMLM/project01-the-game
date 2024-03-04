@@ -5,8 +5,12 @@ class Player {
         this.positionX = 40 - (this.width / 2);
         this.positionY = 5;
 
-        this.playerElement = document.getElementById("player");
+        this.playBoard = document.getElementById("board");
+        const playBoardWidthPercentage = 90;
+        this.minX = 0;
+        this.maxX = (playBoardWidthPercentage - (this.width / window.innerWidth) * 100) * window.innerWidth;
 
+        this.playerElement = document.getElementById("player");
         this.playerElement.style.width = this.width + "vw";
         this.playerElement.style.height = this.height + "vh";
         this.playerElement.style.left = this.positionX + "vw";
@@ -15,16 +19,20 @@ class Player {
         this.playerElement.style.backgroundImage = "url('./images/sprite-player-right.png')";
     }
     moveLeft() {
-        this.playerElement.style.backgroundImage = "url('./images/sprite-player-left.png')";
-        this.positionX -= 3;
-        this.playerElement.style.left = this.positionX + "vw";
+        if (this.positionX > this.minX) {
+            this.playerElement.style.backgroundImage = "url('./images/sprite-player-left.png')";
+            this.positionX -= 3;
+            this.playerElement.style.left = this.positionX + "vw";
+        }
     }
     moveRight() {
-        this.playerElement.style.backgroundImage = "url('./images/sprite-player-right.png')";
-        this.positionX += 3;
-        this.playerElement.style.left = this.positionX + "vw";
+        if (this.positionX < this.maxX) {
+            this.playerElement.style.backgroundImage = "url('./images/sprite-player-right.png')";
+            this.positionX += 3;
+            this.playerElement.style.left = this.positionX + "vw";
+        }
     }
-}
+};
 
 class Sprite {
     constructor() {
@@ -51,9 +59,9 @@ class Sprite {
         if (this.positionY > 0 - this.height) {
             this.positionY--;
             this.sprite.style.bottom = this.positionY + "vh";
-        }   
+        }
     }
-}
+};
 
 class Cookie extends Sprite {
     constructor() {
@@ -68,11 +76,11 @@ class Cookie extends Sprite {
             this.sprite.style.height = this.height + "vh";
 
             this.sprite.style.backgroundImage = "url('./images/sprite-cookie.png')";
-        }     
+        }
 
         this.fallDown();
     }
-}
+};
 
 class Raindrop extends Sprite {
     constructor() {
@@ -91,7 +99,7 @@ class Raindrop extends Sprite {
 
         this.fallDown();
     }
-}
+};
 
 class Poop extends Sprite {
     constructor() {
@@ -110,7 +118,7 @@ class Poop extends Sprite {
 
         this.fallDown();
     }
-}
+};
 
 class Hero extends Sprite {
     constructor() {
@@ -129,4 +137,4 @@ class Hero extends Sprite {
 
         this.fallDown();
     }
-}
+};

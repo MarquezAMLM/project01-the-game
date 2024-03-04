@@ -20,22 +20,31 @@
 [Play the game here](https://mqzmcs.github.io/project01game/)
 
 ## Work in Progress
-### Fix:
-- [X]   objects properly disappearing when reaching the ground
-- [X]   objects properly disappearing when contacting the player
-- [ ]   restricting player movement to within the game space
+## Code & Refactoring:
+My understanding will improve with more experience, but I believe that:
+- the current CSS can be consolidated further, using fewer selectors and shortening the overall code
+- the JavaScript classes and class extensions can be consolidated further as there might be redundancies:
+    - there are four non-player sprites extending the `Sprite` class
+        - their fundamental code is essentially the same except for their size, movement speed and individual relationship to the points system
+        - that variability should be able to be stored inside an object and called using conditionals
+- the `setInterval` functions that control each sprites' movement speed (x4 functions) and spawn rate (x4 functions) are repetitive and/or redundant
+    - these should be able to be consolidated into and conditionally called by:
+        - x1 `setInterval` function for movement speed drawing variables from an object with four relevant key-value pairs
+        - x1 `setInterval` function for spawn rate drawing variables from an object with four relevant key-value pairs
 
-### Functionality:
-- [X]   implement point counter
-- [ ]   make point counter return precise numbers (possibly related to...)
-- [ ]   return single instance of collision per element instead of multiple (inflates the point counter)
+## Known Issues:
+- player sprite traversal right-side boundary not properly restricted/limited:
+    - likely problem: working with `vw`, `vh` and `percentage` values for better responsive design could mean that the math is off with regard to game area values
+    - temporary hotfix: (CSS) `overflow: hidden` to eliminite potential infinite X-axis scrolling
+
+- collision detection and point scoring:
+    - PREVIOUS -- score counting registered massively because (I believe) of per-pixel contact between player sprite and other sprites
+    - CURRENT -- correct score count and/or correct score count +/-1 registering per instance of collision
 
 ## UX:
 - [X]   beautifying game menus, including proper positioning of static elements, etc.
 - [ ]   background music and sound effects
 
-## Code:
-- [ ]   create a Game class
-- [ ]   improve the interaction between current parent-child classes
-- [ ]   try to store the different triggers and/or conditions of the different sprites and player inside an object structure
-- [ ]   streamline the functions to encompass more conditions and variables in fewer functions instead of writing multiple similar functions for different elements
+## Fix:
+- [X]   sprites properly disappearing from viewport and DOM when reaching the bottom Y-axis limit
+- [X]   sprites properly disappearing from viewport and DOM when colliding with the player sprite
