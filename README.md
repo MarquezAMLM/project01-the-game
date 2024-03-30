@@ -1,10 +1,11 @@
 # Billy Biscuit: Cookie Collector
+<b>[Play it here!](https://mqzmcs.github.io/project01game/)</b>
 
-#### Ironhack, Module 01, Week 03, Project 01 (individual)
+<img width="1080px" src="https://res.cloudinary.com/dr2c3k5gm/image/upload/v1711836966/projects/billy-biscuit-01_lu0cpe.png">
 
-## Browser Game
+## Description & How to Play
 
-<img width="90%" src="./images/readme-image01.png">
+<img width="1080px" src="https://res.cloudinary.com/dr2c3k5gm/image/upload/v1711836968/projects/billy-biscuit-02_jj6mtc.png">
 
 ## Technologies Used
 
@@ -18,19 +19,10 @@
     - collision detection
     - scoring logic
 
-- Images and sprites made and processed by me using Microsoft Paint, Microsoft Paint 3D and Adobe.com
-
-## How to Play
-
-<img width="90%" src="./images/readme-image02.png">
-
-## Demo
-
-<b>[PLAY IT HERE!](https://mqzmcs.github.io/project01game/)</b>
+- Images and sprites made and processed by me using Microsoft Paint, Microsoft Paint 3D.
 
 # Work in Progress
-
-## Code & Refactoring:
+### Code & Refactoring:
 
 My understanding will improve with more experience, but I believe that:
 
@@ -45,7 +37,7 @@ My understanding will improve with more experience, but I believe that:
         - x1 `setInterval` function for movement speed drawing variables from an object with four relevant key-value pairs
         - x1 `setInterval` function for spawn rate drawing variables from an object with four relevant key-value pairs
 
-## Known Issues:
+### Known Issues:
 
 - player sprite traversal right-side boundary not properly restricted/limited:
     - likely problem: working with `vw`, `vh` and `percentage` values for better responsive design could mean that the math is off with regard to game area values
@@ -60,12 +52,12 @@ My understanding will improve with more experience, but I believe that:
     - CURRENT -- correct score count and/or correct score count +/-1 registering per instance of collision
     - an occassional delay between the score triggering the corresponding `gameover.html` and/or `gamewon.html`
 
-## UX:
+### UX:
 
 - [X] beautifying game menus, including proper positioning of static elements, etc.
 - [ ] background music and sound effects
 
-## Fix:
+### Fix:
 
 - [X] sprites properly disappearing from viewport and DOM when reaching the bottom Y-axis limit
 - [X] sprites properly disappearing from viewport and DOM when colliding with the player sprite
